@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Button } from 'antd';
-import { AppleOutlined } from '@ant-design/icons';
+
 import { Space } from 'antd';
+import { Outlet,Link } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,9 +9,10 @@ function App() {
   return (
     <>
       <div className="App">
-        顶级组件
-        <Button type="primary">Primary Button</Button>
-        <AppleOutlined style={{color:'red'}}/>
+        <Link to="/home">Home</Link> |
+        <Link to="/about">About</Link>
+        {/* 占位符组件，等同于vue中的<router-view> */}
+        <Outlet></Outlet> 
       </div>
     </>
   )

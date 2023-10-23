@@ -8,10 +8,11 @@ import "reset-css"
 import "@/assets/style/global.scss"
 // 组件样式
 
-import App from './App.tsx'
+// import App from './App.tsx'
+import Router from './router'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <Router />
   </React.StrictMode>,
 )
