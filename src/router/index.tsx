@@ -4,7 +4,8 @@ import Home from '../views/Home'
 
 import { BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 
-const About = lazy(()=> import('../views/About'))
+const Page1 = lazy(()=> import('../views/Page1'))
+const Page2 = lazy(()=> import('../views/Page2'))
 
 const withLoadingComponent = (comp:JSX.Element) => {
     return (
@@ -16,16 +17,34 @@ const withLoadingComponent = (comp:JSX.Element) => {
 const routes = [
     {
         path:'/',
-        element:<Navigate to='/home' />
+        element:<Navigate to='/page1' />
     },
     {
-        path:'/home',
-        element:<Home />
-    },
-    {
-        path:'/about',
-        element:withLoadingComponent(<About />)
-    },
+        path:'/',
+        element:<Home />,
+        children:[
+            {
+                path:'/page1',
+                element:withLoadingComponent(<Page1 />)
+            },
+            {
+                path:'/page2',
+                element:withLoadingComponent(<Page2 />)
+            },
+        ]
+    }
+    // {
+    //     path:'/home',
+    //     element:<Home />
+    // },
+    // {
+    //     path:'/page1',
+    //     element:withLoadingComponent(<Page1 />)
+    // },
+    // {
+    //     path:'/page2',
+    //     element:withLoadingComponent(<Page2 />)
+    // },
 ]
 
 export default routes
