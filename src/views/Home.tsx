@@ -29,8 +29,8 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem('Option 1', '/page1', <PieChartOutlined />),
-  getItem('Option 2', '/page2', <DesktopOutlined />),
+  getItem('Page 1', '/page1', <PieChartOutlined />),
+  getItem('Page 2', '/page2', <DesktopOutlined />),
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Tom', '3'),
     getItem('Bill', '4'),
@@ -53,11 +53,29 @@ const View: React.FC = () => {
     
   }
 
+  const [openKeys, setopenKeys] = useState(['']);   // 第一个参数：定义变量； 第二个参数：修改变量
+
+  const handleChange = (keys:String) => {
+    // 展开 回收 时执行的代码
+    // console.log(keys); // 数组 记录了当前展开的菜单
+    
+    setopenKeys([keys[keys.length-1]])
+  }
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={menuClick} />
+        <Menu 
+            theme="dark" 
+            defaultSelectedKeys={['/page1']} 
+            mode="inline" 
+            items={ items } 
+            onClick={ menuClick } 
+            onOpenChange={ handleChange }
+            // 当前菜单展开项的key数组
+            openKeys={ openKeys }
+        />
       </Sider>
       <Layout>
         <Header style={{ padding: '0 0 0 16px', background: colorBgContainer }} >
