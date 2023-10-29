@@ -10,10 +10,13 @@ import "@/assets/style/global.scss"
 
 import App from './App.tsx'
 
+import { BrowserRouter } from 'react-router-dom';
 // import Router from './router/index.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )
